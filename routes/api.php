@@ -1,37 +1,23 @@
 <?php
 
-use app\http\controllers\auth\usercontroller;
-use app\http\controllers\auth\authcontroller;
-use illuminate\support\facades\route;
+use App\Http\Controllers\Auth\UserController; // 'A' y 'U' mayúscula
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Route;         // 'I' y 'R' mayúscula
 
 // ruta para obtener al usuario autenticado
-/*
-route::get('/user', function (request $request) {
+
+route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-*/
 
-// rutas de autenticación (login)
-route::post('login', [authcontroller::class, 'login']);
-route::post('logout', [authcontroller::class, 'logout'])->middleware('auth:sanctum');
+Route::post('register', [App\Http\Controllers\Auth\AuthController::class, 'register']);
+Route::post('login', [App\Http\Controllers\Auth\AuthController::class, 'login']);
 
-// rutas protegidas para la gestión de usuarios
-route::middleware('auth:sanctum', 'admin')->group(function () {
-    // obtener todos los usuarios
-    route::get('users', [usercontroller::class, 'getallusers']);
-
-    // obtener usuario por id
-    route::get('users/{id}', [usercontroller::class, 'getuserbyid']);
-
-    // crear un nuevo usuario
-    route::post('users', [usercontroller::class, 'store']);
-
-    // actualizar usuario
-    route::put('users/{id}', [usercontroller::class, 'update']);
-
-    // eliminar un usuario
-    route::delete('users/{id}', [usercontroller::class, 'delete']);
-
-    // listar los nombres de los usuarios
-    route::get('users/names', [usercontroller::class, 'listuser']);
+Route::middleware(['auth:sanctum', 'admin'])->group(function () {
+    Route::get('users', [UserController::class, 'getAllUsers']);
+    Route::get('users/{id}', [UserController::class, 'getUserById']);
+    Route::post('users', [UserController::class, 'store']);
+    Route::put('users/{id}', [UserController::class, 'update']);
+    Route::delete('users/{id}', [UserController::class, 'delete']);
+    Route::get('users/names', [UserController::class, 'listUser']);
 });

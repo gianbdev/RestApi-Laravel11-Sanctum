@@ -4,32 +4,49 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    /**
-     * Maneja la autenticación de un usuario.
-     *
-     * @param LoginRequest $request
-     * @return \Illuminate\Http\JsonResponse
-     */
+    public function register(RegisterRequest $request)
+    {
+        // Crear un nuevo usuario
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        // Crear un token para el usuario registrado
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'user' => $user,
+            'token' => $token,
+        ], 201);
+    }
+
     public function login(LoginRequest $request)
     {
-        // Validación ya está hecha en LoginRequest
-
         // Obtener las credenciales del usuario
         $credentials = $request->only('email', 'password');
 
-        // Intentar autenticar al usuario
-        if (Auth::attempt($credentials)) {
+        $user = User::where('email', $credentials['email'])->first();
+
+        if (!$user || !Hash::check($credentials['password'], $user->password)) {
+            return response([
+                'message' => 'Bad credentials'
+            ], 401);
         }
 
-        // Si la autenticación falla
-        throw ValidationException::withMessages([
-            'email' => ['Las credenciales proporcionadas no son válidas.'],
-        ]);
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return [
+            'user' => $user,
+            'token' => $token
+        ];
     }
 
     public function logout(LoginRequest $request)
