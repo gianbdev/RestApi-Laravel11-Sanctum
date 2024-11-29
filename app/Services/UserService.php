@@ -21,21 +21,18 @@ class UserService
         return $this->userRepo->getAllUsers();
     }
 
-    // Método para encontrar un usuario por su ID
     public function findUserById($id)
     {
-        return User::find($id);  // Devuelve el usuario o null si no lo encuentra
+        return User::find($id);
     }
 
     public function createUser(array $data): User
     {
-        // Lógica adicional para crear un usuario
         return User::create($data);
     }
 
     public function updateUser(User $user, array $data): User
     {
-        // Validar y actualizar un usuario
         $user->update($data);
         return $user;
     }

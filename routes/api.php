@@ -1,17 +1,16 @@
 <?php
 
-use App\Http\Controllers\Auth\UserController; // 'A' y 'U' mayúscula
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\UserController;
 use Illuminate\Http\Client\Request;
-use Illuminate\Support\Facades\Route;         // 'I' y 'R' mayúscula
-
-// ruta para obtener al usuario autenticado
+use Illuminate\Support\Facades\Route;
 
 route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('register', [App\Http\Controllers\Auth\AuthController::class, 'register']);
-Route::post('login', [App\Http\Controllers\Auth\AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('users', [UserController::class, 'getAllUsers']);

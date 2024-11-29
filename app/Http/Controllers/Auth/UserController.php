@@ -31,7 +31,7 @@ class UserController extends Controller
     {
         // Asignar el rol 'user' por defecto al crear un usuario
         $data = $request->validated();
-        $data['role'] = 'admin';  // Puedes cambiarlo a 'admin' si es necesario
+        $data['role'] = 'admin';
 
         $user = $userService->createUser($data);
         return response()->json(new UserResource($user), 201);
