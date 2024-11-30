@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Models\Client;
+
 class ClientRepository
 {
     /**
@@ -10,5 +12,10 @@ class ClientRepository
     public function __construct()
     {
         //
+    }
+
+    public function getAllClients()
+    {
+        return Client::all();
     }
 }

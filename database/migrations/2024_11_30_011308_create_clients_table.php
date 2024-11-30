@@ -15,7 +15,7 @@ return new class () extends Migration {
             $table->string('client_name', 100);
             $table->string('client_last_name', 100);
             $table->string('client_phone', 10)->unique();
-            $table->string('client_ocupation')->nullable();
+            $table->string('client_ocupation', 50)->nullable();
             $table->boolean('client_status')->default(true);
             $table->timestamps();
         });
