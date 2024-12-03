@@ -26,6 +26,7 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('Clients/GetClient/{client}', [ClientController::class, 'show']);
     Route::put('Clients/UpdateClient/{client}', [ClientController::class, 'update']);
     Route::delete('Clients/DeleteClient/{client}', [ClientController::class, 'destroy']);
+    Route::get('Clients/GetClientsList', [ClientController::class, 'listClient']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });
