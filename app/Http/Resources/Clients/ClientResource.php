@@ -20,9 +20,9 @@ class ClientResource extends JsonResource
             'client_last_name' => $this->client_last_name,
             'client_phone' => $this->client_phone,
             'client_ocupation' => $this->client_ocupation,
-            'client_status' => $this->client_status ? 'active' : 'inactive', // Booleano transformado a texto
+            'client_status' => $this->client_status ? 'active' : 'inactive',
             'created_at' => $this->created_at->toDateTimeString(),
-            'updated_at' => $this->updated_at->toDateTimeString(),
+            //'updated_at' => $this->updated_at->toDateTimeString(),
         ];
     }
 }

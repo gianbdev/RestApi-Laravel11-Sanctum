@@ -67,4 +67,11 @@ class ClientController extends Controller
         $this->clientService->deleteClient($client);
         return response()->json(['message' => 'Client deleted successfully']);
     }
+
+    // Listar data de los clientes
+    public function listClient(ClientService $clientService)
+    {
+        $clients = $clientService->getAllClients();
+        return ClientResource::collection($clients);
+    }
 }
