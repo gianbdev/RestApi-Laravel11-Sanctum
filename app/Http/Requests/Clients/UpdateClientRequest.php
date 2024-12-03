@@ -4,7 +4,7 @@ namespace App\Http\Requests\Clients;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ClientRequest extends FormRequest
+class UpdateClientRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,8 +12,6 @@ class ClientRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
-        // Permitir solicitudes sólo si el usuario es administrador
-        //return auth()->check() && auth()->user()->is_admin;
     }
 
     /**
@@ -23,14 +21,12 @@ class ClientRequest extends FormRequest
      */
     public function rules(): array
     {
-
         return [
-            'client_name' => 'required|string|max:55',
-            'client_last_name' => 'required|string|max:55',
-            'client_phone' => 'required|string|unique:clients,client_phone|max:10',
-            'client_ocupation' => 'required|string|max:100',
-            'client_status' => 'required|boolean',
+            'client_name' => 'nullable|string|max:255',
+            'client_last_name' => 'nullable|string|max:255',
+            'client_phone' => 'nullable|string|max:20',
+            'client_ocupation' => 'nullable|string|max:255',
+            'client_status' => 'nullable|string|max:50',
         ];
     }
-
 }

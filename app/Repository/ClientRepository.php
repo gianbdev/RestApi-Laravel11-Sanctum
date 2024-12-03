@@ -18,4 +18,9 @@ class ClientRepository
     {
         return Client::all();
     }
+
+    public function findClientById(int $id): ?Client
+    {
+        return Client::find($id);
+    }
 }

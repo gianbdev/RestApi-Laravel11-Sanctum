@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Client;
 use App\Repository\ClientRepository;
 
 class ClientService
@@ -20,23 +21,26 @@ class ClientService
         return $this->clientRepo->getAllClients();
     }
 
-    public function findClientById()
+    public function findClientById(int $id): ?Client
     {
-
+        return $this->clientRepo->findClientById($id);
     }
 
-    public function createClient()
+    public function createClient(array $data): Client
     {
 
+        return Client::create($data);
     }
 
-    public function updateClien()
+    public function updateClient(Client $client, array $data): Client
     {
 
+        $client->update($data);
+        return $client;
     }
 
-    public function deleteClient()
+    public function deleteClient(Client $client)
     {
-
+        $client->delete();
     }
 }

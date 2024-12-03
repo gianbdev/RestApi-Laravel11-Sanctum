@@ -13,7 +13,7 @@ class UserController extends Controller
     public function getAllUsers(UserService $userService)
     {
         $users = $userService->getAllUsers();
-        return UserResource::collection($users);
+        return $users;
     }
 
     // Obtener usuario por ID
@@ -63,7 +63,6 @@ class UserController extends Controller
     public function listUser(UserService $userService)
     {
         $users = $userService->getAllUsers();
-        $userNames = $users->pluck('name');
-        return response()->json($userNames);
+        return UserResource::collection($users);
     }
 }

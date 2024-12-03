@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -49,12 +50,12 @@ class AuthController extends Controller
         ];
     }
 
-    public function logout(LoginRequest $request)
+    public function logout(Request $request)
     {
         // Revoca el token actual del usuario
         $request->user()->currentAccessToken()->delete();
 
-        return response()->json(['message' => 'Sesión cerrada correctamente.']);
+        return response()->json(['message' => 'User Logout successfully']);
     }
 
 }
