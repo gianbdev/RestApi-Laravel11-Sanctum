@@ -24,7 +24,7 @@ class ClientRepository
         return Client::find($id);
     }
 
-    public function listClients()
+    public function clientsList()
     {
         return Client::all();
     }

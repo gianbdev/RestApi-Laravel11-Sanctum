@@ -12,8 +12,6 @@ class ClientRequest extends FormRequest
     public function authorize(): bool
     {
         return true;
-        // Permitir solicitudes sólo si el usuario es administrador
-        //return auth()->check() && auth()->user()->is_admin;
     }
 
     /**

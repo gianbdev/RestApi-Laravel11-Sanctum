@@ -22,8 +22,8 @@ class UpdateTypeDocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'typeDocument_name' => 'nullable|string|nax:45',
-            'typeDocument_status' => 'nullable|string|max:11'
+            'typeDocument_name' => 'nullable|string',
+            'typeDocument_status' => 'nullable|boolean',
         ];
     }
 }

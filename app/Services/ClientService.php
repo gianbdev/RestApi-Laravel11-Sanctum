@@ -44,8 +44,8 @@ class ClientService
         $client->delete();
     }
 
-    public function getListClients()
+    public function getClientsList()
     {
-        return $this->clientRepo->listClients();
+        return $this->clientRepo->clientsList();
     }
 }

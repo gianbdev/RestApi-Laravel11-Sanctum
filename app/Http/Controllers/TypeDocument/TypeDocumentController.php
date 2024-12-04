@@ -41,7 +41,7 @@ class TypeDocumentController extends Controller
      */
     public function show(int $id)
     {
-        $typeDocument = $this->typeDocumentService->findTypeDocumentById($id);
+        $typeDocument = $this->typeDocumentService->getTypeDocumentById($id);
 
         if (!$typeDocument) {
             return response()->json(['message' => 'Client not found'], 404);
@@ -69,9 +69,9 @@ class TypeDocumentController extends Controller
     }
 
     // Listar data de los clientes
-    public function listTypeDocument(TypeDocumentService $typeDocumentService)
+    public function list(TypeDocumentService $typeDocumentService)
     {
-        $typeDocuments = $typeDocumentService->listTypeDocument();
+        $typeDocuments = $typeDocumentService->getTypeDocumentsList();
         return TypeDocumentResource::collection($typeDocuments);
     }
 }

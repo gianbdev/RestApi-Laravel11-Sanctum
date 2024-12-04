@@ -69,9 +69,9 @@ class ClientController extends Controller
     }
 
     // Listar data de los clientes
-    public function listClients(ClientService $clientService)
+    public function list(ClientService $clientService)
     {
-        $clients = $clientService->getListClients();
+        $clients = $clientService->getClientsList();
         return ClientResource::collection($clients);
     }
 }

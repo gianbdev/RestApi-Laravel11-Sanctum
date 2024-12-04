@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Clients\ClientController;
+use App\Http\Controllers\TypeDocument\TypeDocumentController;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,14 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::get('Clients/GetClient/{client}', [ClientController::class, 'show']);
     Route::put('Clients/UpdateClient/{client}', [ClientController::class, 'update']);
     Route::delete('Clients/DeleteClient/{client}', [ClientController::class, 'destroy']);
-    Route::get('Clients/GetClientsList', [ClientController::class, 'listClients']);
+    Route::get('Clients/GetClientsList', [ClientController::class, 'list']);
+
+    Route::get('TypeDocuments/GetAllTypeDocuments', [TypeDocumentController::class, 'index']);
+    Route::post('TypeDocuments/SaveTypeDocument', [TypeDocumentController::class, 'store']);
+    Route::get('TypeDocuments/GetTypeDocument/{typeDocument}', [TypeDocumentController::class, 'show']);
+    Route::put('TypeDocuments/UpdateTypeDocument/{typeDocument}', [TypeDocumentController::class, 'update']);
+    Route::delete('TypeDocuments/DeleteTypeDocument/{typeDocument}', [TypeDocumentController::class, 'destroy']);
+    Route::get('TypeDocuments/GetTypeDocumentsList', [TypeDocumentController::class, 'list']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });

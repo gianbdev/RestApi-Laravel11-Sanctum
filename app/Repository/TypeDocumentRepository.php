@@ -14,7 +14,7 @@ class TypeDocumentRepository
         //
     }
 
-    public function getAllTypeDocuments()
+    public function getTypeDocuments()
     {
         return TypeDocument::paginate(10);
     }
@@ -24,7 +24,7 @@ class TypeDocumentRepository
         return TypeDocument::find($id);
     }
 
-    public function getListTypeDocument()
+    public function typeDocumentsList()
     {
         return TypeDocument::all();
     }

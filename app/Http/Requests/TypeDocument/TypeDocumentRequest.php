@@ -22,8 +22,8 @@ class TypeDocumentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name_typeDocument' => 'required|string|max:45',
-            'status_typeDocument' => 'required|boolean'
+            'typeDocument_name' => 'required|string|max:45',
+            'typeDocument_status' => 'required|boolean'
         ];
     }
 }

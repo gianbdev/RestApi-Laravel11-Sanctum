@@ -18,12 +18,12 @@ class TypeDocumentService
 
     public function getAllTypeDocuments()
     {
-        return $this->typeDocumentoRepository->getAllTypeDocuments();
+        return $this->typeDocumentoRepository->getTypeDocuments();
     }
 
-    public function findTypeDocumentById($id)
+    public function getTypeDocumentById(int $id): ?TypeDocument
     {
-        return TypeDocument::find($id);
+        return $this->typeDocumentoRepository->findTypeDocumentById($id);
     }
 
     public function createTypeDocument(array $data): TypeDocument
@@ -31,19 +31,19 @@ class TypeDocumentService
         return TypeDocument::create($data);
     }
 
-    public function updateTypeDocument(TypeDocument $user, array $data): TypeDocument
+    public function updateTypeDocument(TypeDocument $typeDocument, array $data): TypeDocument
     {
-        $user->update($data);
-        return $user;
+        $typeDocument->update($data);
+        return $typeDocument;
     }
 
-    public function deleteTypeDocument(TypeDocument $user)
+    public function deleteTypeDocument(TypeDocument $typeDocument)
     {
-        $user->delete();
+        $typeDocument->delete();
     }
 
-    public function listTypeDocument()
+    public function getTypeDocumentsList()
     {
-        return $this->typeDocumentoRepository->getListTypeDocument();
+        return $this->typeDocumentoRepository->TypeDocumentslist();
     }
 }
