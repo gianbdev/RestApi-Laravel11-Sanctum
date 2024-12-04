@@ -41,7 +41,7 @@ class ClientController extends Controller
      */
     public function show(int $id)
     {
-        $client = $this->clientService->findClientById($id);
+        $client = $this->clientService->getClientById($id);
 
         if (!$client) {
             return response()->json(['message' => 'Client not found'], 404);
@@ -69,9 +69,9 @@ class ClientController extends Controller
     }
 
     // Listar data de los clientes
-    public function listClient(ClientService $clientService)
+    public function listClients(ClientService $clientService)
     {
-        $clients = $clientService->getAllClients();
+        $clients = $clientService->getListClients();
         return ClientResource::collection($clients);
     }
 }

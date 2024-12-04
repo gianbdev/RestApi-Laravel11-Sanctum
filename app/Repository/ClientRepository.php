@@ -14,13 +14,18 @@ class ClientRepository
         //
     }
 
-    public function getAllClients()
+    public function getClients()
     {
-        return Client::all();
+        return Client::paginate(10);
     }
 
     public function findClientById(int $id): ?Client
     {
         return Client::find($id);
+    }
+
+    public function listClients()
+    {
+        return Client::all();
     }
 }

@@ -18,10 +18,10 @@ class ClientService
 
     public function getAllClients()
     {
-        return $this->clientRepo->getAllClients();
+        return $this->clientRepo->getClients();
     }
 
-    public function findClientById(int $id): ?Client
+    public function getClientById(int $id): ?Client
     {
         return $this->clientRepo->findClientById($id);
     }
@@ -42,5 +42,10 @@ class ClientService
     public function deleteClient(Client $client)
     {
         $client->delete();
+    }
+
+    public function getListClients()
+    {
+        return $this->clientRepo->listClients();
     }
 }
