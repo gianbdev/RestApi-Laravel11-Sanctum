@@ -7,7 +7,7 @@ use App\Http\Requests\Clients\ClientRequest;
 use App\Http\Requests\Clients\UpdateClientRequest;
 use App\Http\Resources\Clients\ClientResource;
 use App\Models\Client;
-use App\Services\ClientService;
+use App\Services\Client\ClientService;
 
 class ClientController extends Controller
 {

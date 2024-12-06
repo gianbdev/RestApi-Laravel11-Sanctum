@@ -1,34 +1,35 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Client;
 
 use App\Models\Client;
-use App\Repository\ClientRepository;
+//use App\Repository\Client\ClientRepository;
+use App\Repository\Client\ClientRepositoryInterface;
 
-class ClientService
+class ClientService implements ClientServiceInterface
 {
-    protected $clientRepo;
+    protected $clientRepository;
     /**
      * Create a new class instance.
      */
-    public function __construct(ClientRepository $clientRepo)
+    public function __construct(ClientRepositoryInterface $clientRepository)
     {
-        $this->clientRepo = $clientRepo;
+        $this->clientRepository = $clientRepository;
     }
+
 
     public function getAllClients()
     {
-        return $this->clientRepo->getClients();
+        return $this->clientRepository->getClients();
     }
 
     public function getClientById(int $id): ?Client
     {
-        return $this->clientRepo->findClientById($id);
+        return $this->clientRepository->findClientById($id);
     }
 
     public function createClient(array $data): Client
     {
-
         return Client::create($data);
     }
 
@@ -46,6 +47,6 @@ class ClientService
 
     public function getClientsList()
     {
-        return $this->clientRepo->clientsList();
+        return $this->clientRepository->clientsList();
     }
 }

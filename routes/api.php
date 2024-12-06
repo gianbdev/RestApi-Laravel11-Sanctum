@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Clients\ClientController;
+use App\Http\Controllers\Drink\DrinkController;
 use App\Http\Controllers\TypeDocument\TypeDocumentController;
 use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,13 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     Route::put('TypeDocuments/UpdateTypeDocument/{typeDocument}', [TypeDocumentController::class, 'update']);
     Route::delete('TypeDocuments/DeleteTypeDocument/{typeDocument}', [TypeDocumentController::class, 'destroy']);
     Route::get('TypeDocuments/GetTypeDocumentsList', [TypeDocumentController::class, 'list']);
+
+    Route::get('Drinks/GetAllDrinks', [DrinkController::class, 'index']);
+    Route::post('Drinks/SaveDrink', [DrinkController::class, 'store']);
+    Route::get('Drinks/GetDrink/{drink}', [DrinkController::class, 'show']);
+    Route::put('Drinks/UpdateDrink/{drink}', [DrinkController::class, 'update']);
+    Route::delete('Drinks/DeleteDrink/{drink}', [DrinkController::class, 'destroy']);
+    Route::get('Drinks/GetDrinksList', [DrinkController::class, 'list']);
 
     Route::post('logout', [AuthController::class, 'logout']);
 });

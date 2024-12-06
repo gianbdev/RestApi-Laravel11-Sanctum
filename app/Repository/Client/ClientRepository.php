@@ -1,19 +1,11 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Client;
 
 use App\Models\Client;
 
-class ClientRepository
+class ClientRepository implements ClientRepositoryInterface
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        //
-    }
-
     public function getClients()
     {
         return Client::paginate(10);
