@@ -3,7 +3,6 @@
 namespace App\Services\Client;
 
 use App\Models\Client;
-//use App\Repository\Client\ClientRepository;
 use App\Repository\Client\ClientRepositoryInterface;
 
 class ClientService implements ClientServiceInterface
@@ -16,7 +15,6 @@ class ClientService implements ClientServiceInterface
     {
         $this->clientRepository = $clientRepository;
     }
-
 
     public function getAllClients()
     {
