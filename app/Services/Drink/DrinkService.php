@@ -1,29 +1,29 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Drink;
 
 use App\Models\Drink;
-use App\Repository\DrinkRepository;
+use App\Repository\Drink\DrinkRepositoryInterface;
 
-class DrinkService
+class DrinkService implements DrinkServiceInterface
 {
     protected $drinkRepository;
     /**
      * Create a new class instance.
      */
-    public function __construct(DrinkRepository $drinkRepository)
+    public function __construct(DrinkRepositoryInterface $drinkRepository)
     {
         $this->drinkRepository = $drinkRepository;
     }
 
     public function getAllDrinks()
     {
-        return $this->drinkRepository->getClients();
+        return $this->drinkRepository->getDrinks();
     }
 
     public function getDrinkById(int $id): ?Drink
     {
-        return $this->drinkRepository->findClientById($id);
+        return $this->drinkRepository->findDrinkById($id);
     }
 
     public function createDrink(array $data): Drink
@@ -42,7 +42,7 @@ class DrinkService
         $drink->delete();
     }
 
-    public function getDrinkList()
+    public function getDrinksList()
     {
         return $this->drinkRepository->drinksList();
     }

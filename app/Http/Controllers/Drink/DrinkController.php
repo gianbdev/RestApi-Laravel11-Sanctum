@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Drink;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Drink\DrinkResource;
-use App\Services\DrinkService;
+use App\Services\Drink\DrinkService;
 
 class DrinkController extends Controller
 {

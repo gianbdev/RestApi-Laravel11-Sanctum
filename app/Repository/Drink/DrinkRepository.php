@@ -1,25 +1,17 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Drink;
 
 use App\Models\Drink;
 
-class DrinkRepository
+class DrinkRepository implements DrinkRepositoryInterface
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    public function getClients()
+    public function getDrinks()
     {
         return Drink::paginate(10);
     }
 
-    public function findClientById(int $id): ?Drink
+    public function findDrinkById(int $id): ?Drink
     {
         return Drink::fint($id);
     }
