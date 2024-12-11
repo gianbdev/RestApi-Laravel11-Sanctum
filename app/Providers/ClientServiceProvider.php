@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Repository\Client\ClientRepository;
 use App\Repository\Client\ClientRepositoryInterface;
 use App\Services\Client\ClientService;
-use App\Services\Client\ClientServiceInterface;
+use App\Services\Client\impl\ClientServiceImpl;
 use Illuminate\Support\ServiceProvider;
 
 class ClientServiceProvider extends ServiceProvider
@@ -16,7 +16,7 @@ class ClientServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(ClientRepositoryInterface::class, ClientRepository::class);
-        $this->app->bind(ClientServiceInterface::class, ClientService::class);
+        $this->app->bind(ClientService::class, ClientServiceImpl::class);
     }
 
     /**

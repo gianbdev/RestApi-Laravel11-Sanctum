@@ -4,16 +4,8 @@ namespace App\Repository;
 
 use App\Models\TypeDocument;
 
-class TypeDocumentRepository
+class TypeDocumentRepository implements TypeDocumentRepositoryInterface
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        //
-    }
-
     public function getTypeDocuments()
     {
         return TypeDocument::paginate(10);
